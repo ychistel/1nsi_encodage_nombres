@@ -1,4 +1,4 @@
-name: Representation des données
+name: Representation des nombres signés et flottants
 
 on:
   push:
