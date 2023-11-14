@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="fr" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Nombre signé en binaire &#8212; NSI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/script.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/nombre_signe';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Exercices" href="exercice_1.html" />
+    <link rel="prev" title="Nombre signé et flottant" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">NSI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Nombre signé en binaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercice_1.html">Exercices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nombre_flottant.html">Les nombres flottants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercice_2.html">Exercices</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/nombre_signe.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Nombre signé en binaire</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ecriture-binaire">Ecriture binaire</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nombre-de-bits">Nombre de bits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complement-a-2">Complément à 2</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="nombre-signe-en-binaire">
+<h1>Nombre signé en binaire<a class="headerlink" href="#nombre-signe-en-binaire" title="Lien permanent vers cette rubrique">#</a></h1>
+<section id="ecriture-binaire">
+<h2>Ecriture binaire<a class="headerlink" href="#ecriture-binaire" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>Les nombres entiers négatifs et positifs sont appelés des <strong>nombres signés</strong>.</p>
+<ul class="simple">
+<li><p>Si l’écriture binaire du nombre commence par <span class="math notranslate nohighlight">\(1\)</span> (bit de poids fort), alors le nombre est <strong>négatif</strong>.</p></li>
+<li><p>Si l’écriture binaire du nombre commence par <span class="math notranslate nohighlight">\(0\)</span> (bit de poids fort), alors le nombre est <strong>positif</strong>.</p></li>
+</ul>
+<p>Sur un octet (8 bits), on peut écrire <span class="math notranslate nohighlight">\(2^{8}=256\)</span> valeurs. La moitié de ces valeurs sont négatives et l’autre moitié sont des nombres positifs.</p>
+<ul class="simple">
+<li><p>On a 128 nombres négatifs compris entre <span class="math notranslate nohighlight">\(-2^{7}=-128\)</span> et <span class="math notranslate nohighlight">\(-1\)</span>,</p></li>
+<li><p>On a 128 nombres positifs compris entre <span class="math notranslate nohighlight">\(0\)</span> et <span class="math notranslate nohighlight">\(2^{7}-1=127\)</span>.</p></li>
+</ul>
+<p>Sur <strong>n</strong> bits, on a <span class="math notranslate nohighlight">\(2^{n}\)</span> nombres entiers signés qui sont compris entre <span class="math notranslate nohighlight">\(-2^{n-1}\)</span> et <span class="math notranslate nohighlight">\(2^{n-1}-1\)</span>.</p>
+<div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p>Pour <span class="math notranslate nohighlight">\(n = 5\)</span> bits, on dispose de <span class="math notranslate nohighlight">\(2^{5}=32\)</span> écritures binaires.</p>
+<ul class="simple">
+<li><p>Le plus petit nombre entier négatif a pour valeur : <span class="math notranslate nohighlight">\(-2^{5-1}=-2^{4}=-16\)</span>;</p></li>
+<li><p>Le plus grand nombre entier positif a pour valeur : <span class="math notranslate nohighlight">\(2^{5-1}-1=2^{4}-1=16-1=15\)</span>;</p></li>
+</ul>
+<p>Sur 5 bits on écrit en binaire les nombres signés de <span class="math notranslate nohighlight">\(-16\)</span> à <span class="math notranslate nohighlight">\(15\)</span>.</p>
+</div>
+</section>
+<section id="nombre-de-bits">
+<h2>Nombre de bits<a class="headerlink" href="#nombre-de-bits" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>Le nombre minimum de bits pour écrire un nombre signé en binaire dépend de la valeur de ce nombre. Pour connaître ce nombre de bits, il suffit de trouver le plus petit intervalle dont les bornes sont deux puissances de 2 contenant ce
+nombre signé.</p>
+<div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p>Combien de bits pour écrire le nombre <span class="math notranslate nohighlight">\(-23\)</span> en binaire ?</p>
+<p>On a <span class="math notranslate nohighlight">\(-32 \leqslant -23 &lt;32\)</span> ce qui est équivalent à <span class="math notranslate nohighlight">\(-2^{5} &lt;      -23 &lt; 2^{5}\)</span>.</p>
+<p>On en déduit qu’il faut au minimum <span class="math notranslate nohighlight">\(5+1=6\)</span> bits pour coder le nombre <span class="math notranslate nohighlight">\(-23\)</span>.</p>
+</div>
+<p>De façon générale, cela revient à chercher un exposant <span class="math notranslate nohighlight">\(k\)</span> tel que le nombre signé appartient à l’intervalle <span class="math notranslate nohighlight">\([-2^{k};2^{k}]\)</span>.</p>
+<p>Cela nous donne <span class="math notranslate nohighlight">\(2^{k+1}\)</span> nombres dans l’intervalle et donc il faut au minimum <span class="math notranslate nohighlight">\(k+1\)</span> bits pour coder le nombre signé.</p>
+</section>
+<section id="complement-a-2">
+<h2>Complément à 2<a class="headerlink" href="#complement-a-2" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>Les nombres signés positifs se convertissent en binaire comme les nombres entiers (non signés).</p>
+<p>Les nombres signés négatifs ne se convertissent pas comme les nombres positifs. Un nombre signé négatif est converti par la méthode du <strong>complément à 2</strong>.</p>
+<p>L’écriture binaire d’un nombre signé négatif s’obtient à partir du nombre signé positif (valeur absolue) et de son complément à 2.</p>
+<p class="rubric">Méthode du complément à 2</p>
+<p>Elle se fait en trois étapes:</p>
+<ol class="arabic simple">
+<li><p>écriture binaire de la valeur absolue du nombre négatif,</p></li>
+<li><p>le <strong>complément à 1</strong> de cette écriture binaire, ce qui signifie que chaque bit 0 est remplacé par le bit 1 et chaque bit 1 est remplacé par le bit 0.</p></li>
+<li><p>le <strong>complément à 2</strong> c’est à dire en ajoutant 1 au complément à 1.</p></li>
+</ol>
+<div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p>Écriture binaire du nombre négatif <span class="math notranslate nohighlight">\(-23\)</span> se code sur 6 bits.</p>
+<ul class="simple">
+<li><p>on écrit 23 en binaire sur 6 bits : <span class="math notranslate nohighlight">\(010111\)</span></p></li>
+<li><p>le complément à 1 de <span class="math notranslate nohighlight">\(010111\)</span> est <span class="math notranslate nohighlight">\(101000\)</span></p></li>
+<li><p>le complément à 2 de <span class="math notranslate nohighlight">\(101000\)</span> est <span class="math notranslate nohighlight">\(101000+1=101001\)</span></p></li>
+</ul>
+<p>En binaire, le nombre <span class="math notranslate nohighlight">\(-23\)</span> s’écrit <span class="math notranslate nohighlight">\(101001\)</span> sur 6 bits.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Le nombre de bits utilisés est important. Par exemple, le nombre <span class="math notranslate nohighlight">\(-23\)</span> s’écrit <span class="math notranslate nohighlight">\(101001\)</span> sur 6 bits et il s’écrit <span class="math notranslate nohighlight">\(11101001\)</span> sur 1 octet.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Soit <span class="math notranslate nohighlight">\(n\)</span> le nombre signé négatif codé en binaire sur <span class="math notranslate nohighlight">\(k\)</span> bits. Le nombre signé <span class="math notranslate nohighlight">\(n\)</span> se code en binaire comme le nombre entier <span class="math notranslate nohighlight">\(n+2^{k}\)</span>.</p>
+<ol class="arabic simple">
+<li><p>On calcule la valeur <span class="math notranslate nohighlight">\(n+2^{k}\)</span>.</p></li>
+<li><p>On convertit en binaire le nombre calculé précédemment.</p></li>
+</ol>
+<p>Par exemple, le nombre signé <span class="math notranslate nohighlight">\(-23\)</span> se code sur 6 bits.</p>
+<ol class="arabic simple">
+<li><p>Il se code en binaire comme le nombre <span class="math notranslate nohighlight">\(-23+2^{6}=-23+64=41\)</span>.</p></li>
+<li><p>Comme <span class="math notranslate nohighlight">\(41_{10}=32+8+1\)</span> donc <span class="math notranslate nohighlight">\(41_{10}=101001_{2}\)</span> sur 6 bits.</p></li>
+</ol>
+<p>On en déduit que <span class="math notranslate nohighlight">\(-23_{10}=101001_{2}\)</span> sur 6 bits.</p>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Nombre signé et flottant</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="exercice_1.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Exercices</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ecriture-binaire">Ecriture binaire</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nombre-de-bits">Nombre de bits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complement-a-2">Complément à 2</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Yannick Chistel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Yannick Chistel.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

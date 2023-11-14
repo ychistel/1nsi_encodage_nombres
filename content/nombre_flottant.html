@@ -1,0 +1,592 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="fr" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Les nombres flottants &#8212; NSI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/script.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/nombre_flottant';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Exercices" href="exercice_2.html" />
+    <link rel="prev" title="Exercices" href="exercice_1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Passer au contenu principal</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">NSI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="nombre_signe.html">Nombre signé en binaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercice_1.html">Exercices</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Les nombres flottants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercice_2.html">Exercices</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/nombre_flottant.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Les nombres flottants</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-de-binaire-a-decimal">Conversion de binaire à décimal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-de-decimal-a-binaire">Conversion de décimal à binaire</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-mathematique">Conversion mathématique</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notation-scientifique">Notation scientifique</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="les-nombres-flottants">
+<h1>Les nombres flottants<a class="headerlink" href="#les-nombres-flottants" title="Lien permanent vers cette rubrique">#</a></h1>
+<p>Dans les langages de programmation comme Python, les nombres à virgule sont
+appelés des <strong>flottants</strong> ou <strong>float</strong> et se notent avec un point. Par exemple,
+le nombre 2,5 se note 2.5.</p>
+<p>Les nombres flottants représentent les nombres réels. Comme les nombres
+entiers, ils s’écrivent en binaire:</p>
+<ul class="simple">
+<li><p>La partie entière est composée de puissances de 2 positives;</p></li>
+<li><p>La partie après la virgule (ou le point), est composée de puissances de 2 négatives.</p></li>
+</ul>
+<div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}24,53_{10} = 2 \times 10^{1} + 4 \times 10^{0} + 5 \times 10^{-1} + 3 \times 10^{-2}\\10,01_{2} = 1 \times 2^{1} + 0 \times 2^{0} + 0 \times 2^{-1} + 1 \times 2^{-2}\end{aligned}\end{align} \]</div>
+</div>
+<section id="conversion-de-binaire-a-decimal">
+<h2>Conversion de binaire à décimal<a class="headerlink" href="#conversion-de-binaire-a-decimal" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>Pour convertir un nombre flottant codé en binaire en un nombre décimal, on
+calcule la somme des puissances de 2 positives et négatives. On rappelle
+quelques valeurs de puissances de 2.</p>
+<table class="margin table table-center" id="tableau">
+<caption><span class="caption-text">Puissances de 2</span><a class="headerlink" href="#tableau" title="Lien permanent vers ce tableau">#</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(2^{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{-1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{-2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{-3}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{-4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{-5}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,5\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,25\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,125\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0625\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,03125\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p>Conversion du nombre binaire <span class="math notranslate nohighlight">\(1.01_{2}\)</span> en base 10.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}1,01_{2} &amp;=1 \times 2^{0} + 0 \times 2^{-1} + 1 \times 2^{-2}\\
+&amp;= 1+0+0,25\\
+&amp;= 1,25_{10}\end{split}\]</div>
+</div>
+</section>
+<section id="conversion-de-decimal-a-binaire">
+<h2>Conversion de décimal à binaire<a class="headerlink" href="#conversion-de-decimal-a-binaire" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>Nous tapons sur le clavier des nombres avec la notation décimale mais ces
+nombres sont convertis en binaire pour la machine.</p>
+<p>La conversion d’un nombre en écriture décimale en écriture binaire se fait en deux temps.</p>
+<ol class="arabic simple">
+<li><p>Conversion de la partie entière placée avant la virgule;</p></li>
+<li><p>Conversion de la partie après la virgule.</p></li>
+</ol>
+<p>On donne ci-après un algorithme de conversion d’un nombre flottant <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>on convertit la partie entière de x (vu précédemment).
+
+on soustrait la partie entière de x à x (nombre inférieur ou égal à 1)
+soit d la partie décimale de x
+
+tant que d est différent de 0:
+        d=d*2
+        si d &gt;= 1 alors :
+                d=d-1
+                le chiffre binaire vaut 1
+        sinon
+                le chiffre binaire vaut 0
+</pre></div>
+</div>
+<div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p>Conversion en binaire du nombre <span class="math notranslate nohighlight">\(2,375\)</span>:</p>
+<ol class="arabic">
+<li><p>La partie entière vaut 2 que l’on convertit : <span class="math notranslate nohighlight">\(2_{10}=10_{2}\)</span></p></li>
+<li><p>La partie décimale, après la virgule:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(0,375 \times 2 = 0,750\)</span> or <span class="math notranslate nohighlight">\(0,75 &lt; 1\)</span> donc le premier chiffre après la virgule est 0;</p></li>
+<li><p><span class="math notranslate nohighlight">\(0,750 \times 2 = 1,5\)</span> or <span class="math notranslate nohighlight">\(1,5 &gt; 1\)</span> donc le second chiffre après la virgule est 1 et on retire 1 à notre partie décimale;</p></li>
+<li><p><span class="math notranslate nohighlight">\(0,5 \times 2 = 1\)</span>  or <span class="math notranslate nohighlight">\(1 = 1\)</span> donc le dernier chiffre après la virgule est un 1 et on retire 1 à notre partie décimale.</p></li>
+</ul>
+<p>Comme notre partie décimale est 0, on a terminé la conversion.</p>
+<p>Le nombre <span class="math notranslate nohighlight">\(2,375_{10}\)</span> en base 10 s’écrit <span class="math notranslate nohighlight">\(10,011_{2}\)</span> en binaire.</p>
+</li>
+</ol>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Ainsi programmé, on risque d’avoir dans certains cas une boucle infinie. Il
+faudra ajouter une instruction pour l’éviter.</p>
+</div>
+<p>Dans certains cas, la partie après la virgule est infinie. Comme la machine alloue
+un nombre de bits fini, la valeur est donc approchée et peut alors générer des erreurs
+dans les calculs.</p>
+<div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p>La valeur obtenue par le calcul <span class="math notranslate nohighlight">\(0,1+0,2\)</span> en binaire est une valeur approchée
+de la valeur exacte <span class="math notranslate nohighlight">\(0,3\)</span>.</p>
+<p>Les nombres <span class="math notranslate nohighlight">\(0,1\)</span> et <span class="math notranslate nohighlight">\(0,2\)</span> ont une partie après la virgule infinie
+donc approchée par la machine.</p>
+<p>Par conséquent, le nombre <span class="math notranslate nohighlight">\(0,3\)</span> a lui aussi une valeur approchée par la machine.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.2</span>
+<span class="go">0.30000000000000004</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.1</span><span class="o">*</span><span class="mi">3</span>
+<span class="go">0.30000000000000004</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">0.3</span><span class="o">*</span><span class="mi">3</span>
+<span class="go">0.8999999999999999</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="conversion-mathematique">
+<h2>Conversion mathématique<a class="headerlink" href="#conversion-mathematique" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>La conversion d’un nombre décimal en écriture binaire peut utiliser une écriture
+fractionnaire dont le numérateur est un nombre entier et le dénominateur une
+puissance de 2.</p>
+<p>Tout nombre décimal <span class="math notranslate nohighlight">\(x\)</span> qui s’écrit en fraction de la forme <span class="math notranslate nohighlight">\(\dfrac{n}{2^{p}}\)</span>
+a la même écriture binaire que le numérateur <span class="math notranslate nohighlight">\(n\)</span> une fois le séparateur (virgule, point)
+déplacé de <span class="math notranslate nohighlight">\(p\)</span> chiffres vers la gauche.</p>
+<div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p>On remarque que <span class="math notranslate nohighlight">\(2,375 = \dfrac{19}{8} = \dfrac{19}{2^{3}}\)</span></p>
+<p>Le nombre <span class="math notranslate nohighlight">\(19_{10}=16+2+1=2^{4}+2^{3}+2^{1}+2^{0}\)</span> soit <span class="math notranslate nohighlight">\(10011_{2}\)</span>
+en binaire.</p>
+<p>L’exposant du dénominateur est <span class="math notranslate nohighlight">\(p=3\)</span> donc avec un décalage de trois rangs
+vers la gauche, on obtient le nombre <span class="math notranslate nohighlight">\(10,011_{2}\)</span>.</p>
+</div>
+</section>
+<section id="notation-scientifique">
+<h2>Notation scientifique<a class="headerlink" href="#notation-scientifique" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>Dans le système décimal, les grands et petits nombres sont écrits en
+<strong>notation scientifique</strong>.</p>
+<p>Par exemple, la valeur 7 milliards se note <span class="math notranslate nohighlight">\(7 \times 10^{9}\)</span>. On rappelle
+que le nombre écrit devant la puissance de 10 est un nombre compris entre 1 et
+10 (exclus).</p>
+<p>En binaire, les nombres peuvent s’écrire avec une puissance de <span class="math notranslate nohighlight">\(2\)</span>. La virgule
+dans le nombre se positionne selon l’exposant de la puissance de 2. Voilà pourquoi
+on parle de <strong>flottant</strong> en faisant référence à cette virgule qui <strong>flotte</strong>.</p>
+<div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<ul class="simple">
+<li><p>Avec un exposant <span class="math notranslate nohighlight">\(n=3\)</span> : <span class="math notranslate nohighlight">\(1101,0101_{2}=1,1010101 \times 2^{3}\)</span></p></li>
+<li><p>Avec un exposant <span class="math notranslate nohighlight">\(n=2\)</span> : <span class="math notranslate nohighlight">\(1101,0101_{2}=11,010101 \times 2^{2}\)</span></p></li>
+<li><p>Avec un exposant <span class="math notranslate nohighlight">\(n=-4\)</span> : <span class="math notranslate nohighlight">\(1101,0101_{2}=11010101 \times 2^{-4}\)</span></p></li>
+</ul>
+</div>
+<p>Sur les machines, des normes d’écriture des nombres flottants existent selon
+l’encodage en 32 ou 64 bits et reposent sur l’usage des puissances de 2.</p>
+<p>On peut généraliser ainsi:</p>
+<ul>
+<li><p>le premier bit est réservé au signe du nombre;</p></li>
+<li><p>les bits suivants (8 ou 11) sont réservés à l’exposant;</p></li>
+<li><p>les derniers bits (23 ou 52) appelé <strong>mantisse</strong> sont réservés à la valeur du
+nombre. Cette valeur est comprise entre 1 et 2 ce qui implique que le premier
+chiffre de la mantisse vaut 1. Par conséquent, les chiffres de l’écriture binaire
+sont ceux de la partie décimale.</p>
+<a class="reference internal image-reference" href="../_images/flottant.png"><img alt="../_images/flottant.png" class="align-center" src="../_images/flottant.png" style="width: 480px;" /></a>
+<p>Le nombre ainsi représenté a pour valeur:</p>
+<ul>
+<li><p>le signe vaut 1, donc le nombre est négatif.</p></li>
+<li><p>l’exposant <em>e</em>:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}e &amp;= 2^{7}+2^{2}+2^{1} - 127\\e &amp;= 128+4+2 - 127\\e &amp;= 7\end{aligned}\end{align} \]</div>
+</li>
+<li><p>mantisse <em>m</em>:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}m &amp;= 1 + 2^{-1} + 2^{-3} + 2^{-5} + 2^{-6} + 2^{-8} + 2^{-9}\\m &amp;= 1,677734375\end{aligned}\end{align} \]</div>
+</li>
+</ul>
+<p>Au final, on obtient:</p>
+<div class="math notranslate nohighlight">
+\[-1,677734375 \times 2^{7} = -214,75\]</div>
+</li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="exercice_1.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Exercices</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="exercice_2.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Exercices</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-de-binaire-a-decimal">Conversion de binaire à décimal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-de-decimal-a-binaire">Conversion de décimal à binaire</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-mathematique">Conversion mathématique</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notation-scientifique">Notation scientifique</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Yannick Chistel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Yannick Chistel.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
