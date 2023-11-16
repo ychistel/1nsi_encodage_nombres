@@ -5,8 +5,7 @@ Dans les langages de programmation comme Python, les nombres à virgule sont
 appelés des **flottants** ou **float** et se notent avec un point. Par exemple,
 le nombre 2,5 se note 2.5.
 
-Les nombres flottants représentent les nombres réels. Comme les nombres
-entiers, ils s'écrivent en binaire:
+Les nombres flottants représentent les nombres réels. Comme les nombres entiers, ils s'écrivent en binaire:
 
 - La partie entière est composée de puissances de 2 positives;
 - La partie après la virgule (ou le point), est composée de puissances de 2 négatives.
@@ -164,10 +163,7 @@ On peut généraliser ainsi:
 
 -	le premier bit est réservé au signe du nombre;
 -	les bits suivants (8 ou 11) sont réservés à l'exposant;
--	les derniers bits (23 ou 52) appelé **mantisse** sont réservés à la valeur du 
-	nombre. Cette valeur est comprise entre 1 et 2 ce qui implique que le premier 
-	chiffre de la mantisse vaut 1. Par conséquent, les chiffres de l'écriture binaire 
-	sont ceux de la partie décimale.
+-	les derniers bits (23 ou 52) appelé **mantisse** sont réservés à la valeur du nombre. Cette valeur est comprise entre 1 et 2 ce qui implique que le premier chiffre de la mantisse vaut 1. Par  conséquent, les chiffres de l'écriture binaire sont ceux de la partie décimale.
   
 	.. image:: ../img/flottant.png
 		:align: center

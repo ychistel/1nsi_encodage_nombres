@@ -48,7 +48,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/exercice_2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
-    <link rel="prev" title="Les nombres flottants" href="nombre_flottant.html" />
+    <link rel="prev" title="Les nombres flottants" href="flottant.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="fr"/>
   </head>
@@ -138,7 +138,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="nombre_signe.html">Nombre signé en binaire</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercice_1.html">Exercices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nombre_flottant.html">Les nombres flottants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flottant.html">Les nombres flottants</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercices</a></li>
 </ul>
 
@@ -288,6 +288,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1">Exercice 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">Exercice 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">Exercice 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">Exercice 4</a></li>
 </ul>
             </nav>
         </div>
@@ -301,23 +303,102 @@ document.write(`
                   
   <section id="exercices">
 <h1>Exercices<a class="headerlink" href="#exercices" title="Lien permanent vers cette rubrique">#</a></h1>
+<p>Pour les exercices on donne le tableau de puissances de 2 suivant:</p>
+<table class="border-style-solid border-width-1 table">
+<tbody>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(2^{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{-1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{-2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{-3}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{-4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{-5}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{-6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{-7}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{-8}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,5\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,25\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,125\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0625\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,03125\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,015625\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,0078125\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0,00390625\)</span></p></td>
+</tr>
+</tbody>
+</table>
 <section id="exercice-1">
 <h2>Exercice 1<a class="headerlink" href="#exercice-1" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>Les nombres binaires sont à virgule fixe.</p>
 <ol class="arabic simple">
-<li><p>Donner l’écriture binaire du nombre <span class="math notranslate nohighlight">\(5,6875_{10}\)</span></p></li>
-<li><p>Donner l’écriture binaire du nombre <span class="math notranslate nohighlight">\(0,2_{10}\)</span>. Que remarque-t-on ?</p></li>
+<li><p>Donner la valeur en écriture décimale des nombres :</p>
+<ol class="loweralpha simple">
+<li><p><span class="math notranslate nohighlight">\(111,1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(10000000,00000001\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(0,111\)</span></p></li>
+</ol>
+</li>
+<li><p>Donner l’écriture en virgule flottante des nombres précédents.</p></li>
 </ol>
 </section>
 <section id="exercice-2">
 <h2>Exercice 2<a class="headerlink" href="#exercice-2" title="Lien permanent vers cette rubrique">#</a></h2>
-<p>Le nombre <span class="math notranslate nohighlight">\(0 01010 1111100110\)</span> est l’écriture binaire d’un nombre flottant sur 2 octets.</p>
-<p>Ce nombre binaire suit la norme suivante : <span class="math notranslate nohighlight">\(s (1+m) \times 2^{e}\)</span> sachant que:</p>
-<ul class="simple">
-<li><p>le bit de poids fort donne son signe <em>s</em></p></li>
-<li><p>les 5 bits suivants donne son exposant <em>e</em></p></li>
-<li><p>les 10 derniers bits sont la partie décimale de la mantisse <em>m</em> du nombre. La mantisse est un nombre compris entre 1 et 2.</p></li>
+<p>On donne une méthode pour convertir un nombre en écriture décimale en écriture binaire avec une virgule fixe.</p>
+<ul>
+<li><p>On convertit la partie entière (avant la virgule) comme la conversion d’un entier (non signé).</p></li>
+<li><p>Pour la partie décimale (après la virgule), on applique l’algorithme suivant:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tant</span> <span class="n">que</span> <span class="n">la</span> <span class="n">partie</span> <span class="n">décimale</span> <span class="n">est</span> <span class="n">différente</span> <span class="n">de</span> <span class="mi">0</span><span class="p">:</span>
+
+<span class="o">-</span>  <span class="n">on</span> <span class="n">multiplie</span> <span class="n">par</span> <span class="mi">2</span> <span class="n">la</span> <span class="n">partie</span> <span class="n">décimale</span><span class="p">;</span>
+<span class="o">-</span>  <span class="n">le</span> <span class="n">chiffre</span> <span class="n">avant</span> <span class="n">la</span> <span class="n">virgule</span> <span class="n">est</span> <span class="n">la</span> <span class="n">valeur</span> <span class="n">du</span> <span class="n">bit</span> <span class="n">cherché</span><span class="p">;</span>
+<span class="o">-</span>  <span class="n">on</span> <span class="n">recommence</span> <span class="n">avec</span> <span class="n">la</span> <span class="n">partie</span> <span class="n">décimale</span> <span class="n">du</span> <span class="n">résultat</span> <span class="n">calculé</span> <span class="n">précédemment</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
 </ul>
+<p>On donne un exemple pour convertir <span class="math notranslate nohighlight">\(2,625\)</span> en binaire.</p>
+<p>Le nombre <span class="math notranslate nohighlight">\(2\)</span> se convertit <span class="math notranslate nohighlight">\(10\)</span> en binaire. Appliquons l’algorithme pour <span class="math notranslate nohighlight">\(0,625\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(0,625 \times 2 = 1,25\)</span> donc le premier bit après la virgule vaut 1; on recommence avec <span class="math notranslate nohighlight">\(0,25\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(0,25\times 2 = 0,5\)</span> donc le deuxième bit après la virgule vaut 0; on recommence avec <span class="math notranslate nohighlight">\(0.5\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(0,5 \times 2 = 1,0\)</span> donc le troisième bit après la virgule vaut 1; la partie décimale est 0, on arête.</p></li>
+</ul>
+<p>Conclusion : <span class="math notranslate nohighlight">\(2,625_{10} = 10,101_{2}\)</span></p>
+<ol class="arabic simple">
+<li><p>Donner l’écriture binaire du nombre <span class="math notranslate nohighlight">\(5,6875_{10}\)</span>.</p></li>
+<li><p>Donner l’écriture binaire du nombre <span class="math notranslate nohighlight">\(-13,15625_{10}\)</span>.</p></li>
+<li><p>Donner l’écriture binaire du nombre <span class="math notranslate nohighlight">\(0,2_{10}\)</span>. Que remarque-t-on ?</p></li>
+</ol>
+</section>
+<section id="exercice-3">
+<h2>Exercice 3<a class="headerlink" href="#exercice-3" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>On donne le nombre dont la représentation binaire suit la norme IEEE 754.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/flottant_3.svg"><img alt="../_images/flottant_3.svg" src="../_images/flottant_3.svg" width="480" /></a>
+</figure>
 <p>Quelle est la valeur décimale de ce nombre ?</p>
+</section>
+<section id="exercice-4">
+<h2>Exercice 4<a class="headerlink" href="#exercice-4" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>On donne ci-après un algorithme de conversion d’un nombre flottant <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>on convertit la partie entière de x (vu précédemment).
+
+on soustrait la partie entière de x à x (nombre inférieur ou égal à 1)
+soit d la partie décimale de x
+
+tant que d est différent de 0:
+   d=d*2
+   si d &gt;= 1 alors :
+      d=d-1
+      le chiffre binaire vaut 1
+   sinon
+      le chiffre binaire vaut 0
+</pre></div>
+</div>
+<p>Écrire un script en Python qui affiche la représentation binaire en virgule fixe.</p>
 </section>
 </section>
 
@@ -333,7 +414,7 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="nombre_flottant.html"
+       href="flottant.html"
        title="page précédente">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -358,6 +439,8 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1">Exercice 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">Exercice 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">Exercice 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">Exercice 4</a></li>
 </ul>
   </nav></div>
 

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Exercices &#8212; NSI</title>
+    <title>Les nombres flottants &#8212; NSI</title>
   
   
   
@@ -45,11 +45,11 @@
     <script src="../_static/script.js"></script>
     <script src="../_static/translations.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/exercice_1';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/flottant';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Recherche" href="../search.html" />
-    <link rel="next" title="Les nombres flottants" href="flottant.html" />
-    <link rel="prev" title="Nombre signé en binaire" href="nombre_signe.html" />
+    <link rel="next" title="Exercices" href="exercice_2.html" />
+    <link rel="prev" title="Exercices" href="exercice_1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="fr"/>
   </head>
@@ -138,8 +138,8 @@
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="nombre_signe.html">Nombre signé en binaire</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="flottant.html">Les nombres flottants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercice_1.html">Exercices</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Les nombres flottants</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercice_2.html">Exercices</a></li>
 </ul>
 
@@ -195,7 +195,7 @@
       
       
       
-      <li><a href="../_sources/content/exercice_1.rst" target="_blank"
+      <li><a href="../_sources/content/flottant.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Télécharger le fichier source"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -277,7 +277,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercices</h1>
+    <h1>Les nombres flottants</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -287,10 +287,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1">Exercice 1</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">Exercice 2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">Exercice 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">Exercice 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-en-virgule-fixe">Représentation en virgule fixe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-en-virgule-flottante">Représentation en virgule flottante</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norme-ieee-754">Norme IEEE 754</a></li>
 </ul>
             </nav>
         </div>
@@ -302,137 +301,109 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="exercices">
-<h1>Exercices<a class="headerlink" href="#exercices" title="Lien permanent vers cette rubrique">#</a></h1>
-<section id="exercice-1">
-<h2>Exercice 1<a class="headerlink" href="#exercice-1" title="Lien permanent vers cette rubrique">#</a></h2>
-<p>Donner l’encodage en binaire et sur 1 octet des nombres signés suivants. On détaillera la méthode.</p>
-<ol class="loweralpha simple">
-<li><p><span class="math notranslate nohighlight">\(-17\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(33\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(-78\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(-104\)</span></p></li>
-</ol>
+  <section id="les-nombres-flottants">
+<h1>Les nombres flottants<a class="headerlink" href="#les-nombres-flottants" title="Lien permanent vers cette rubrique">#</a></h1>
+<p>Les nombres à virgule ont une représentation en binaire. En informatique, ces nombres sont dits <strong>flottants</strong>.</p>
+<section id="representation-en-virgule-fixe">
+<h2>Représentation en virgule fixe<a class="headerlink" href="#representation-en-virgule-fixe" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>Les nombres flottants ont une partie avant la virgule et une partie après la virgule.</p>
+<ul class="simple">
+<li><p>La partie entière est composée de puissances de 2 positives;</p></li>
+<li><p>La partie après la virgule (ou le point), est composée de puissances de 2 d’exposants négatifs.</p></li>
+</ul>
+<div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p>Le nombre <span class="math notranslate nohighlight">\(1001,01\)</span> écrit en binaire représente un nombre à virgule. Pour le convertir en écriture décimale, on associe à chaque chiffre sa puissance de 2.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}1001,01_{2} &amp;= 1\times 2^{3} + 0\times 2^{2} + 0\times 2^{1} + 1\times 2^{0} + 0\times 2^{-1} + 1\times 2^{-2}\\
+1001,01_{2} &amp;= 8 + 1 + \dfrac{1}{4}\\
+1001,01_{2} &amp;= 9,25_{10}\end{split}\]</div>
+</div>
+<p>La représentation des nombres à virgules en binaire est dans certains cas inexacte. En effet la partie située après la virgule n’est pas nécessairement décomposable avec des puissances de 2. Cela conduit donc a des approximations dont la précision dépend du nombre de bits alloués à l’écriture de la partie après la virgule.</p>
+<div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p>La partie après la virgule du nombre <span class="math notranslate nohighlight">\(0,3\)</span> est représenté sur 1 octet par <code class="docutils literal notranslate"><span class="pre">01001100</span></code>.
+En effectuant le calcul des puissances de 2, on obtient:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}01001100_{2} &amp;=  0 \times 2^{-1} + 1 \times 2^{-2} + 0 \times 2^{-3} + 0 \times 2^{-4} + 1 \times 2^{-5} + 1 \times 2^{-6} + 0 \times 2^{-3} + 0 \times 2^{-4}\\
+01001100_{2} &amp;=  \dfrac{1}{4} + \dfrac{1}{32} + \dfrac{1}{64}\\
+01001100_{2} &amp;= 0,296875\end{split}\]</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>C’est pour cette raison qu’on ne peut pas effectuer de test d’égalité entre 2 nombres à virgule.</p>
+<p>Si <code class="docutils literal notranslate"><span class="pre">a</span></code> et <code class="docutils literal notranslate"><span class="pre">b</span></code> sont 2 nombres à virgule, le test <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">==</span> <span class="pre">b</span></code> est remplacé par le test <code class="docutils literal notranslate"><span class="pre">abs(a</span> <span class="pre">-</span> <span class="pre">b)</span> <span class="pre">&lt;</span> <span class="pre">0.0001</span></code> où le nombre <code class="docutils literal notranslate"><span class="pre">0.0001</span></code> représente la précision attendue.</p>
+</div>
 </section>
-<section id="exercice-2">
-<h2>Exercice 2<a class="headerlink" href="#exercice-2" title="Lien permanent vers cette rubrique">#</a></h2>
-<p>On s’interesse aux nombres écrits sur 4 bits. Tout l’exercice se fait dans un tableau représenté ci-dessous.</p>
-<table class="table">
+<section id="representation-en-virgule-flottante">
+<h2>Représentation en virgule flottante<a class="headerlink" href="#representation-en-virgule-flottante" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>Dans le système décimal, la <strong>notation scientifique</strong> est une écriture d’un nombre sous la forme <span class="math notranslate nohighlight">\(a \times 10^{n}\)</span> où le nombre <span class="math notranslate nohighlight">\(a\)</span> est compris entre 1 et 10.
+L’exposant <span class="math notranslate nohighlight">\(n\)</span> correspond au décalage de la virgule dans le nombre.</p>
+<p>En binaire, les nombres peuvent s’écrire avec une puissance de <span class="math notranslate nohighlight">\(2\)</span>. On décale la virgule jusqu’au premier chiffre non nul. Voilà pourquoi on parle de <strong>flottant</strong> en faisant référence à cette virgule qui <strong>flotte</strong> (se décale).</p>
+<div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(11010101_{2}=1,1010101 \times 2^{7}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(11010,101_{2}=1,1010101 \times 2^{3}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(0,0000101_{2}=1,01 \times 2^{-5}\)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="norme-ieee-754">
+<h2>Norme IEEE 754<a class="headerlink" href="#norme-ieee-754" title="Lien permanent vers cette rubrique">#</a></h2>
+<p>Les représentations des nombres flottants suivent une <strong>norme</strong> d’écriture selon les modèles d’architecture 32 ou 64 bits.</p>
+<p>Cette représentation binaire se décompose en 3 parties:</p>
+<ul class="simple">
+<li><p>le premier bit est réservé au signe du nombre; le bit 0 pour un nombre positif et le bit 1 pour un nombre négatif.</p></li>
+<li><p>les bits suivants (8 ou 11) sont réservés à l’exposant que l’on décale en ajoutant la valeur <span class="math notranslate nohighlight">\(127\)</span> pour une architecture 32 bits et la valeur <span class="math notranslate nohighlight">\(1023\)</span> pour une architecture 64 bits.</p></li>
+<li><p>les derniers bits (23 ou 52) représentent la <strong>mantisse</strong> du nombre. Cette valeur est toujours comprise entre 1 et 2 ce qui implique que le premier chiffre de la mantisse vaut 1 et n’est pas représenté. Par conséquent, seuls les chiffres écrits après la virgule sont représentés.</p></li>
+</ul>
+<p>On résume cette représentation dans le tableau ci-dessous:</p>
+<table class="border-style-solid border-width-1 table">
+<thead>
+<tr class="row-odd"><th class="head"><p>architecture</p></th>
+<th class="head"><p>signe</p></th>
+<th class="head"><p>exposant + décalage</p></th>
+<th class="head"><p>mantisse - 1</p></th>
+</tr>
+</thead>
 <tbody>
-<tr class="row-odd"><td><p>nombre binaire</p></td>
-<td><p>complément à 1</p></td>
-<td><p>complément à 2</p></td>
-<td><p>complément à 1</p></td>
-<td><p>complément à 2</p></td>
+<tr class="row-even"><td><p>32 bits</p></td>
+<td><p>1 bit</p></td>
+<td><p>8 bits</p></td>
+<td><p>23 bits</p></td>
 </tr>
-<tr class="row-even"><td><p>0101</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>01110</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>011011</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>0111001</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>01010110</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<tr class="row-odd"><td><p>64 bits</p></td>
+<td><p>1 bit</p></td>
+<td><p>11 bits</p></td>
+<td><p>52 bits</p></td>
 </tr>
 </tbody>
 </table>
-<ol class="arabic simple">
-<li><p>Compléter les 2 premières colonnes avec le complément à 1 puis le complément à 2 du nombre binaire de la première colonne.</p></li>
-<li><p>Compléter les colonnes 4 et 5 avec le complément à 1 puis le complément à 2 du nombre binaire de la troisième colonne.</p></li>
-<li><p>Comparer les valeurs binaires des colonnes 1 et 5. Que peut-on en conclure ?</p></li>
-</ol>
-</section>
-<section id="exercice-3">
-<h2>Exercice 3<a class="headerlink" href="#exercice-3" title="Lien permanent vers cette rubrique">#</a></h2>
-<ol class="arabic simple">
-<li><p>On donne le nombre signé <span class="math notranslate nohighlight">\(10011011\)</span> encodé sur 1 octet.</p>
-<ol class="loweralpha simple">
-<li><p>Quel est le signe de ce nombre? Justifier.</p></li>
-<li><p>Quelle est la valeur décimale de ce nombre ?</p></li>
-<li><p>Donner une écriture hexadécimale de ce nombre signé.</p></li>
-</ol>
-</li>
-<li><p>On donne le nombre signé <span class="math notranslate nohighlight">\(11011010\)</span> encodé sur 1 octet.</p>
-<ol class="loweralpha simple">
-<li><p>Quel est le signe de ce nombre? Justifier.</p></li>
-<li><p>Quelle est la valeur décimale de ce nombre ?</p></li>
-<li><p>Donner une écriture hexadécimale de ce nombre signé.</p></li>
-</ol>
-</li>
-</ol>
-</section>
-<section id="exercice-4">
-<h2>Exercice 4<a class="headerlink" href="#exercice-4" title="Lien permanent vers cette rubrique">#</a></h2>
-<p>Dans l’interpréteur Python, il est possible de calculer en binaire et en hexadécimal. Il faut préfixer chaque écriture   de nombre par <code class="docutils literal notranslate"><span class="pre">0b</span></code> pour le binaire et <code class="docutils literal notranslate"><span class="pre">0x</span></code> pour l’hexadécimal.</p>
-<p>Par exemple, le nombre écrit en binaire <span class="math notranslate nohighlight">\(101_{2}\)</span> est saisi par <code class="docutils literal notranslate"><span class="pre">0b101</span></code> et le nombre écrit en hexadécimal <span class="math notranslate nohighlight">\(2c_{16}\)</span> est saisi par <code class="docutils literal notranslate"><span class="pre">0x2c</span></code>.</p>
-<p>Aussi, il existe 3 fonctions qui convertissent un nombre écrit dans une base dans une autre base.</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">bin</span></code> prend en argument un nombre entier écrit dans une base et renvoie ce nombre écrit en binaire.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bin</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-<span class="go">&#39;0b1111&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">bin</span><span class="p">(</span><span class="s1">&#39;0xa5&#39;</span><span class="p">)</span>
-<span class="go">&#39;0b10100101&#39;</span>
-</pre></div>
-</div>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">hex</span></code> prend en argument un nombre entier écrit dans une base et renvoie ce nombre écrit en hexadécimal.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">hex</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
-<span class="go">&#39;0x2d&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">hex</span><span class="p">(</span><span class="mb">0b11110001</span><span class="p">)</span>
-<span class="go">&#39;0xf1&#39;</span>
-</pre></div>
-</div>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> prend en argument un nombre entier écrit dans une base et renvoie ce nombre écrit en décimal.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="mb">0b111</span><span class="p">)</span>
-<span class="go">7</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="mh">0xff</span><span class="p">)</span>
-<span class="go">255</span>
-</pre></div>
-</div>
-</li>
+<div class="admonition-exemple admonition">
+<p class="admonition-title">Exemple</p>
+<p>On donne la représentation binaire d’un nombre flottant sur une architecture 32 bits:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/flottant_2.svg"><img alt="../_images/flottant_2.svg" src="../_images/flottant_2.svg" width="480" /></a>
+</figure>
+<div class="math notranslate nohighlight">
+\[\begin{split}e &amp;= 2^{7}+2^{2}+2^{1} - 127\\
+e &amp;= 128+4+2 - 127\\
+e &amp;= 7\end{split}\]</div>
+<ul class="simple">
+<li><p>la mantisse <em>m</em> vaut <code class="docutils literal notranslate"><span class="pre">101011011</span></code>. En ajoutant le bit <code class="docutils literal notranslate"><span class="pre">1</span></code> devant la virgule, on obtient <code class="docutils literal notranslate"><span class="pre">1,101011011</span></code>. Si on décale la virgule de 7 rangs, on obtient le nombre (à virgule fixe) <code class="docutils literal notranslate"><span class="pre">11010110,11</span></code>. On peut convertir la partie avant la virgule:</p></li>
 </ul>
-<div class="admonition caution">
-<p class="admonition-title">Prudence</p>
-<p>Les valeurs renvoyées par les fonctions <code class="docutils literal notranslate"><span class="pre">bin</span></code> et <code class="docutils literal notranslate"><span class="pre">hex</span></code> sont des chaines de caractères !</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}11010110_{2} &amp;= 2^{7} + 2^{6} + 2^{4} + 2^{2} + 2^{1}\\
+11010110_{2} &amp;= 128 + 64 + 16 + 4 + 2\\
+11010110_{2} &amp;= 214\end{split}\]</div>
+<p>et celle après la virgule:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}0,11_{2} &amp;= 2^{-1} + 2^{-2}\\
+0,11_{2} &amp;= \dfrac{1}{2} + \dfrac{1}{4}\\
+0,11_{2} &amp;= 0,75\end{split}\]</div>
+<p>Au final, on obtient le nombre <span class="math notranslate nohighlight">\(-214,75\)</span>.</p>
 </div>
-<ol class="arabic simple">
-<li><p>Dans l’interpréteur Python:</p>
-<ol class="loweralpha simple">
-<li><p>Convertir en décimal les nombres <span class="math notranslate nohighlight">\(1001_{2}\)</span> et <span class="math notranslate nohighlight">\(11010_{2}\)</span>.</p></li>
-<li><p>Calculer la somme et le produit des nombres <span class="math notranslate nohighlight">\(1001_{2}\)</span> et <span class="math notranslate nohighlight">\(11010_{2}\)</span></p></li>
-<li><p>En utilisant la bonne fonction, convertir en binaire et en hexadécimal les résultats précédents.</p></li>
-</ol>
-</li>
-<li><p>Dans l’interpréteur Python:</p>
-<ol class="loweralpha simple">
-<li><p>Convertir en décimal les nombres <span class="math notranslate nohighlight">\(a8_{16}\)</span> et <span class="math notranslate nohighlight">\(54_{16}\)</span></p></li>
-<li><p>Calculer la somme et le produit des nombres <span class="math notranslate nohighlight">\(a8_{16}\)</span> et <span class="math notranslate nohighlight">\(54_{16}\)</span>.</p></li>
-<li><p>En utilisant la bonne fonction, convertir en hexadécimal et en binaire les résultats précédents.</p></li>
-</ol>
-</li>
-</ol>
 </section>
 </section>
 
@@ -448,20 +419,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="nombre_signe.html"
+       href="exercice_1.html"
        title="page précédente">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">précédent</p>
-        <p class="prev-next-title">Nombre signé en binaire</p>
+        <p class="prev-next-title">Exercices</p>
       </div>
     </a>
     <a class="right-next"
-       href="flottant.html"
+       href="exercice_2.html"
        title="page suivante">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">suivant</p>
-        <p class="prev-next-title">Les nombres flottants</p>
+        <p class="prev-next-title">Exercices</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -480,10 +451,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-1">Exercice 1</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-2">Exercice 2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-3">Exercice 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-4">Exercice 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-en-virgule-fixe">Représentation en virgule fixe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-en-virgule-flottante">Représentation en virgule flottante</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norme-ieee-754">Norme IEEE 754</a></li>
 </ul>
   </nav></div>
 
