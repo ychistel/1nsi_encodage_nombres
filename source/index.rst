@@ -26,5 +26,5 @@ On s'intéresse donc à la représentation en binaire de ces nombres et plus par
 
    content/nombre_signe.rst
    content/exercice_1.rst
-   content/nombre_flottant.rst
+   content/flottant.rst
    content/exercice_2.rst
